@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>托盘</title>
+        <script src="three.js-master/build/three.js"></script>
+        <style type="text/css">
+            div#canvas-frame {
+                border: none;
+                cursor: pointer;
+                width: 100%;
+                height: 600px;
+                background-color: #EEEEEE;
+            }
+
+        </style>
+        <script>
+            var renderer;
+            function initThree() {
+                width = document.getElementById('canvas-frame').clientWidth;
+                height = document.getElementById('canvas-frame').clientHeight;
+                renderer = new THREE.WebGLRenderer({
+                    antialias : true
+                });
+                renderer.setSize(width, height);
+                document.getElementById('canvas-frame').appendChild(renderer.domElement);
+                renderer.setClearColor(0xFFFFFF, 1.0);
+            }
+
+            var camera;
+            function initCamera() {
+                camera = new THREE.PerspectiveCamera(90, width / height, 1, 10000);
+                camera.position.x = 1200;
+                camera.position.y =160;
+                camera.position.z = 1200;
+                camera.up.x = 0;
+                camera.up.y = 1;
+                camera.up.z = 0;
+                camera.lookAt({
+                    x : 0,
+                    y : 0,
+                    z : 0
+                });
+            }
+
+            var scene;
+            function initScene() {
+                scene = new THREE.Scene();
+            }
+
+            var light;
+            function initLight() {
+                light = new THREE.AmbientLight(0xFFF100);
+                light.position.set(100, 100, 200);
+                scene.add(light);
+                // 聚光灯
+                light = new THREE.DirectionalLight(0xFFF100);
+                light.position.set(0, 0,1);
+                scene.add(light);
+            }
+
+            // A start 
+            var cube;
+            function initObject() {
+                //上铺板开始
+                var geometry = new THREE.CubeGeometry( 1000, 120, 22,4,4);
+                var material = new THREE.MeshLambertMaterial( { color:0xFFFFFF} );
+                var mesh = new THREE.Mesh( geometry,material);
+                mesh.position.set(0,0,0);
+                scene.add(mesh);
+
+                var geometry2 = new THREE.CubeGeometry( 1000, 120, 22,4,4);
+                var material2 = new THREE.MeshLambertMaterial( { color:0xFFFFFF} );
+                var mesh2 = new THREE.Mesh( geometry2,material2);
+                mesh2.position.set(0,135,0);
+                scene.add(mesh2);
+
+                 var geometry3 = new THREE.CubeGeometry( 1000, 120, 22,4,4);
+                 var material3 = new THREE.MeshLambertMaterial( { color:0xFFFFFF} );
+                 var mesh3 = new THREE.Mesh( geometry3,material3);
+                 mesh3.position.set(0,270,0);
+                 scene.add(mesh3);
+
+                 var mesh4 = new THREE.Mesh( geometry3,material3);
+                 mesh4.position.set(0,405,0);
+                 scene.add(mesh4);
+
+                 var mesh5 = new THREE.Mesh( geometry3,material3);
+                 mesh5.position.set(0,540,0);
+                 scene.add(mesh5);
+
+                 var mesh6 = new THREE.Mesh( geometry3,material3);
+                 mesh6.position.set(0,675,0);
+                 scene.add(mesh6);
+                 var mesh7 = new THREE.Mesh( geometry3,material3);
+                 mesh7.position.set(0,810,0);
+                 scene.add(mesh7);
+                 var mesh8 = new THREE.Mesh( geometry3,material3);
+                 mesh8.position.set(0,945,0);
+                 scene.add(mesh8);
+                 var mesh9 = new THREE.Mesh( geometry3,material3);
+                 mesh9.position.set(0,1080,0);
+                 scene.add(mesh9);
+                 //下铺板结束
+                 //上铺板开始
+                 var geometry10 = new THREE.CubeGeometry( 1000, 120, 22,4,4);
+                var material = new THREE.MeshLambertMaterial( { color:0xFFFFFF} );
+                var mesh10 = new THREE.Mesh( geometry,material);
+                mesh10.position.set(0,0,122);
+                scene.add(mesh10);
+
+                var geometry11 = new THREE.CubeGeometry( 1000, 120, 22,4,4);
+                var material11 = new THREE.MeshLambertMaterial( { color:0xFFFFFF} );
+                var mesh11 = new THREE.Mesh( geometry11,material11);
+                mesh11.position.set(0,135,122);
+                scene.add(mesh11);
+
+                 var geometry12 = new THREE.CubeGeometry( 1000, 120, 22,4,4);
+                 var material12 = new THREE.MeshLambertMaterial( { color:0xFFFFFF} );
+                 var mesh12 = new THREE.Mesh( geometry12,material12);
+                 mesh12.position.set(0,270,122);
+                 scene.add(mesh12);
+
+                 var mesh13 = new THREE.Mesh( geometry3,material3);
+                 mesh13.position.set(0,405,122);
+                 scene.add(mesh13);
+
+                 var mesh14 = new THREE.Mesh( geometry3,material3);
+                 mesh14.position.set(0,540,122);
+                 scene.add(mesh14);
+
+                 var mesh15 = new THREE.Mesh( geometry3,material3);
+                 mesh15.position.set(0,675,122);
+                 scene.add(mesh15);
+                 var mesh16 = new THREE.Mesh( geometry3,material3);
+                 mesh16.position.set(0,810,122);
+                 scene.add(mesh16);
+                 var mesh17 = new THREE.Mesh( geometry3,material3);
+                 mesh17.position.set(0,945,122);
+                 scene.add(mesh17);
+                 var mesh18 = new THREE.Mesh( geometry3,material3);
+                 mesh18.position.set(0,1080,122);
+                 scene.add(mesh18);
+                 //上铺板结束
+                 //纵梁开始
+                   var geometry19 = new THREE.CubeGeometry( 50, 1180, 100,4,4);
+                   var material19 = new THREE.MeshLambertMaterial( { color:0xFFFFFF} );
+                   var mesh19 = new THREE.Mesh( geometry19,material19);
+                   mesh19.position.set(0,525,61);
+                   scene.add(mesh19);
+                   var geometry20 = new THREE.CubeGeometry( 50, 1180, 100,4,4);
+                  var material20 = new THREE.MeshLambertMaterial( { color:0xFFFFFF} );
+                  var mesh20 = new THREE.Mesh( geometry20,material20);
+                  mesh20.position.set(480,525,61);
+                  scene.add(mesh20);
+                   var geometry21 = new THREE.CubeGeometry( 50, 1180, 100,4,4);
+                  var material21 = new THREE.MeshLambertMaterial( { color:0xFFFFFF} );
+                  var mesh21 = new THREE.Mesh( geometry21,material21);
+                  mesh21.position.set(-480,525,61);
+                  scene.add(mesh21);
+
+            }
+            // A end
+
+            function threeStart() {
+                initThree();
+                initCamera();
+                initScene();
+                initLight();
+                initObject();
+                renderer.clear();
+                renderer.render(scene, camera);
+            }
+
+        </script>
+    </head>
+
+    <body onload="threeStart();">
+        <div id="canvas-frame"></div>
+    </body>
+</html>
